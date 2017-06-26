@@ -32,7 +32,7 @@ function handleCommentCreated (request, reply) {
 
   // Do nothing
   if (senderUsername !== GUARDIAN || !body.match(/^approved/i)) {
-    reply()
+    return reply()
   }
 
   const sha = server.app.PRIdShaMap[issue.pull_request.url]
