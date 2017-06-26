@@ -27,10 +27,13 @@ function handlePROpened (request, reply) {
 function handleCommentCreated (request, reply) {
   const { payload, server } = request
   const { issue, comment, repository, sender } = payload
+  const senderUsername = sender.login
   const { body } = comment
 
   // Do nothing
-  if (!body.match(/^approved/i)) reply()
+  if (senderUsername !== GUARDIAN || !body.match(/^approved/i)) {
+    reply()
+  }
 
   const sha = server.app.PRIdShaMap[issue.pull_request.url]
 
