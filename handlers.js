@@ -21,6 +21,8 @@ function handlePROpened (request, reply) {
     context: 'mayimerge'
   }).then(
     () => reply()
+  ).catch(
+    () => reply()
   )
 }
 
@@ -45,6 +47,8 @@ function handleCommentCreated (request, reply) {
     description: `@${GUARDIAN}, may I merge?`,
     context: 'mayimerge'
   }).then(
+    () => reply()
+  ).catch(
     () => reply()
   )
 }
